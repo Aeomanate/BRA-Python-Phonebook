@@ -25,8 +25,15 @@ def add_entry():
         print(f"Error adding entry: {str(e)}")
         return False
 
-def search_by_first_name(): # Артем Ніколаєв
-    print("Search by first name - stub")
+def search_by_first_name():
+    found = False
+    name_to_search = input("Enter first name: ").lower()
+    for (first_name, last_name), (phone_number, city, state) in phonebook.items():
+        if first_name.lower() == name_to_search:
+            print(f'Found person: {first_name} {last_name}, phone number: {phone_number}, city: {city}, state: {state}')
+            found = True
+    if not found:
+        print("A person by that name has not been found")
 
 def search_by_last_name(): # Андрій
     results = []
