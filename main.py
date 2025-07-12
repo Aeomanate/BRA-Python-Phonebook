@@ -1,6 +1,13 @@
 # {("first_name", "last_name"): ("phone_number", "sity", "state")  }
-phonebook = {}
+# from timeit
 
+phonebook = {
+    ("Anna", "Ivanova"): ("380671112233", "Kyiv", "Kyiv Oblast"),
+    ("Oleh", "Shevchenko"): ("380631234567", "Lviv", "Lviv Oblast"),
+    ("Maria", "Koval"): ("380502345678", "Odesa", "Odesa Oblast"),
+    ("Andriy", "Bondar"): ("380931112233", "Kharkiv", "Kharkiv Oblast"),
+    ("Olena", "Tkachenko"): ("380671234890", "Dnipro", "Dnipropetrovsk Oblast")
+}
 def add_entry(): # Nazar
     print("Add new entry - stub")
 
@@ -22,8 +29,29 @@ def search_by_city_or_state(): # Ростислав
 def delete_by_phone_number(): # Дмитро
     print("Delete a record by telephone number - stub")
 
-def update_by_phone_number(phone_number, new_person): # Юлія
-    print("Update a record by telephone number - stub")
+def update_by_phone_number(person_data_dict,phone_number=""):
+    found_person=None
+    phone_number=str(input("Enter phone number: "))
+    for key_name, data_value in person_data_dict.items():
+        if data_value[0] == phone_number:
+            found_person=(key_name, data_value)
+            break
+    if found_person:
+        name, data=found_person
+        print(f"""Person with phone number {phone_number} was found.
+                Full name: {name[0]} {name[1]}
+                City: {data[1]}, {data[2]}""")
+    else:
+        print(f"Person with phone number {phone_number} was not found. Create new record.")
+        first_name=input("First name: ")
+        last_name=input("Last name: ")
+        city=input("City: ")
+        state=input("State: ")
+        new_key_name=(first_name, last_name)
+        new_data_value=(phone_number, city, state)
+        person_data_dict[new_key_name] = new_data_value
+        print(f"Record for person {new_key_name[0]} {new_key_name[1]} with phone number {phone_number} was updated.")
+    return person_data_dict
 
 def exit_program():
     print("Exiting program.")
@@ -64,7 +92,7 @@ def application_loop():
             case 7:
                 delete_by_phone_number()
             case 8:
-                update_by_phone_number()
+                update_by_phone_number(phonebook)
             case 9:
                 is_working = exit_program()
             case _:
