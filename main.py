@@ -67,7 +67,19 @@ def search_by_city_or_state(): # Ростислав
         print("No entries found for the given city or state.")
 
 def delete_by_phone_number(): # Дмитро
-    print("Delete a record by telephone number - stub")
+    print("Delete a record by telephone number")
+    phonebook = {("Dmytro", "Shostak"): ("+380991234567", "Kyiv", "Ukraine")}
+    print("Current phonebook:", phonebook)
+    for key, value in list(phonebook.items()):
+        if value[0] == phone:
+            del phonebook[key]
+            print(f"Record with phone number {phone} deleted.")
+            break
+    else:
+        print("Phone number not found.")
+
+    print("Updated phonebook:", phonebook)
+    return phonebook
 
 def update_by_phone_number(phone_number, new_person): # Юлія
     print("Update a record by telephone number - stub")
