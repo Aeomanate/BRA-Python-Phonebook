@@ -1,3 +1,4 @@
+phonebook = {}
 def add_entry(): # Nazar
     print("Add new entry - stub")
 
@@ -19,10 +20,10 @@ def search_by_city_or_state(): # Ростислав
 def delete_by_phone_number(): # Дмитро
     print("Delete a record by telephone number - stub")
 
-def update_by_phone_number(person_data_dict,phone_number=""):
+def update_by_phone_number(phonebook_dic,phone_number=""):
     found_person=None
     phone_number=str(input("Enter phone number: "))
-    for key_name, data_value in person_data_dict.items():
+    for key_name, data_value in phonebook_dic.items():
         if data_value[0] == phone_number:
             found_person=(key_name, data_value)
             break
@@ -39,9 +40,9 @@ def update_by_phone_number(person_data_dict,phone_number=""):
         state=input("State: ")
         new_key_name=(first_name, last_name)
         new_data_value=(phone_number, city, state)
-        person_data_dict[new_key_name] = new_data_value
+        phonebook_dic[new_key_name] = new_data_value
         print(f"Record for person {new_key_name[0]} {new_key_name[1]} with phone number {phone_number} was updated.")
-    return person_data_dict
+    return phonebook_dic
 
 def exit_program():
     print("Exiting program.")
