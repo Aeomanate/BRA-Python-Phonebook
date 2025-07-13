@@ -48,8 +48,31 @@ def search_by_last_name(): # Андрій
 
     # return results
 
-def search_by_full_name(): # Віталіна
-    print("Search by full name - stub")
+def search_by_full_name():
+    while True:
+        full_name = input("\nEnter full name or type 'back' to return to Phonebook Menu: ").strip()
+
+        if full_name.lower() == "back":
+            return
+
+        if " " not in full_name:
+            print("Please enter both first and last name separated by space.")
+            continue
+
+        first_name, last_name = full_name.split(" ", 1)
+        found = False
+        for (fn, ln), (phone, city, state) in phonebook.items():
+            if fn.lower() == first_name.lower() and ln.lower() == last_name.lower():
+                print(f"\nFound contact:")
+                print(f"Name: {fn} {ln}")
+                print(f"Phone number: {phone}")
+                print(f"City: {city}")
+                print(f"State: {state}")
+                found = True
+                break
+
+        if not found:
+            print("No matching contact found.")
 
 def search_by_phone_number():
     phone = input("Enter the phone number to search: ")
