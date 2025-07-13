@@ -20,10 +20,10 @@ def search_by_city_or_state(): # Ростислав
 def delete_by_phone_number(): # Дмитро
     print("Delete a record by telephone number - stub")
 
-def update_by_phone_number(phonebook_dic,phone_number=""):
+def update_by_phone_number():
     found_person=None
     phone_number=str(input("Enter phone number: "))
-    for key_name, data_value in phonebook_dic.items():
+    for key_name, data_value in phonebook.items():
         if data_value[0] == phone_number:
             found_person=(key_name, data_value)
             break
@@ -40,9 +40,9 @@ def update_by_phone_number(phonebook_dic,phone_number=""):
         state=input("State: ")
         new_key_name=(first_name, last_name)
         new_data_value=(phone_number, city, state)
-        phonebook_dic[new_key_name] = new_data_value
+        phonebook[new_key_name] = new_data_value
         print(f"Record for person {new_key_name[0]} {new_key_name[1]} with phone number {phone_number} was updated.")
-    return phonebook_dic
+    return phonebook
 
 def exit_program():
     print("Exiting program.")
@@ -83,7 +83,7 @@ def application_loop():
             case 7:
                 delete_by_phone_number()
             case 8:
-                update_by_phone_number(phonebook)
+                update_by_phone_number()
             case 9:
                 is_working = exit_program()
             case _:
