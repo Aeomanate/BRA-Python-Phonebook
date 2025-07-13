@@ -1,13 +1,3 @@
-# {("first_name", "last_name"): ("phone_number", "sity", "state")  }
-# from timeit
-
-phonebook = {
-    ("Anna", "Ivanova"): ("380671112233", "Kyiv", "Kyiv Oblast"),
-    ("Oleh", "Shevchenko"): ("380631234567", "Lviv", "Lviv Oblast"),
-    ("Maria", "Koval"): ("380502345678", "Odesa", "Odesa Oblast"),
-    ("Andriy", "Bondar"): ("380931112233", "Kharkiv", "Kharkiv Oblast"),
-    ("Olena", "Tkachenko"): ("380671234890", "Dnipro", "Dnipropetrovsk Oblast")
-}
 def add_entry(): # Nazar
     print("Add new entry - stub")
 
