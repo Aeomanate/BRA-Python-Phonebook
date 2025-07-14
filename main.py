@@ -111,8 +111,29 @@ def delete_by_phone_number(): # Дмитро
     print("Updated phonebook:", phonebook)
     return phonebook
 
-def update_by_phone_number(phone_number, new_person): # Юлія
-    print("Update a record by telephone number - stub")
+def update_by_phone_number():
+    found_person=None
+    phone_number=str(input("Enter phone number: "))
+    for key_name, data_value in phonebook.items():
+        if data_value[0] == phone_number:
+            found_person=(key_name, data_value)
+            break
+    if found_person:
+        name, data=found_person
+        print(f"""Person with phone number {phone_number} was found.
+                Full name: {name[0]} {name[1]}
+                City: {data[1]}, {data[2]}""")
+    else:
+        print(f"Person with phone number {phone_number} was not found. Create new record.")
+        first_name=input("First name: ")
+        last_name=input("Last name: ")
+        city=input("City: ")
+        state=input("State: ")
+        new_key_name=(first_name, last_name)
+        new_data_value=(phone_number, city, state)
+        phonebook[new_key_name] = new_data_value
+        print(f"Record for person {new_key_name[0]} {new_key_name[1]} with phone number {phone_number} was updated.")
+    return phonebook
 
 def exit_program():
     print("Exiting program.")
