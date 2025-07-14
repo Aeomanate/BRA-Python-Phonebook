@@ -276,5 +276,8 @@ def application_loop():
                 print("Invalid choice. Please select a number from 1 to 9.")
 
 
-if __name__ == "__main__":
+def main():
     application_loop()
+
+
+main()
